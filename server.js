@@ -1,54 +1,43 @@
-const http = require("http");
-const fs = require("fs");
-const path = require("path");
+const express = require('express');
+const cors = require('cors');
+const path = require('path');
 
-const root = __dirname;
-const port = process.env.PORT || 3200;
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-const types = {
-  ".html": "text/html; charset=utf-8",
-  ".css": "text/css; charset=utf-8",
-  ".js": "application/javascript; charset=utf-8",
-  ".png": "image/png",
-  ".jpg": "image/jpeg",
-  ".jpeg": "image/jpeg",
-  ".webp": "image/webp",
-  ".svg": "image/svg+xml"
-};
+// Middleware
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-const server = http.createServer((req, res) => {
-  const requestPath = decodeURIComponent(req.url.split("?")[0]);
-  const safePath = requestPath === "/" ? "/index.html" : requestPath;
-  const filePath = path.join(root, safePath);
+// Serve static files from the root directory
+app.use(express.static(path.join(__dirname)));
 
-  if (!filePath.startsWith(root)) {
-    res.writeHead(403);
-    res.end("Forbidden");
-    return;
-  }
-
-  fs.readFile(filePath, (error, content) => {
-    if (error) {
-      res.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
-      res.end("Not found");
-      return;
-    }
-
-    res.writeHead(200, { "Content-Type": types[path.extname(filePath)] || "application/octet-stream" });
-    res.end(content);
-  });
+// Your API routes (add your existing API endpoints here)
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'OK', message: 'Server is running' });
 });
 
-server.listen(port, () => {
-  console.log(`Health Sweets Ntombi site running at http://localhost:${port}`);
+// Your existing API endpoints
+// Example:
+// app.post('/api/orders', (req, res) => { ... });
+
+// Serve admin.html directly
+app.get('/admin.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'admin.html'));
 });
 
-// For local development only
+// For Vercel - catch-all route for SPA
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// For local development
 if (require.main === module) {
-  app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
   });
 }
 
-// EXPORT FOR VERCEL - Add this at the bottom
+// Export for Vercel
 module.exports = app;
