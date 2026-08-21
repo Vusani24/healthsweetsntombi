@@ -20,6 +20,27 @@
     {
       "src": "assets/*",
       "use": "@vercel/static"
+    },
+    {
+      "src": "assets/*.mp4",
+      "use": "@vercel/static",
+      "headers": {
+        "Content-Type": "video/mp4"
+      }
+    },
+    {
+      "src": "assets/*.jpeg",
+      "use": "@vercel/static",
+      "headers": {
+        "Content-Type": "image/jpeg"
+      }
+    },
+    {
+      "src": "assets/*.png",
+      "use": "@vercel/static",
+      "headers": {
+        "Content-Type": "image/png"
+      }
     }
   ],
   "routes": [
@@ -28,7 +49,7 @@
       "dest": "/server.js"
     },
     {
-      "src": "/(.*\\.(css|js|png|jpg|jpeg|gif|svg|ico|json))",
+      "src": "/(.*\\.(css|js|png|jpg|jpeg|gif|svg|ico|json|mp4|webm|ogg))",
       "dest": "/$1"
     },
     {
