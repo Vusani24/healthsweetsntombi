@@ -42,3 +42,5 @@ const server = http.createServer((req, res) => {
 server.listen(port, () => {
   console.log(`Health Sweets Ntombi site running at http://localhost:${port}`);
 });
+// EXPORT FOR VERCEL - Add this at the bottom
+module.exports = app;
