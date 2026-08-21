@@ -6,7 +6,7 @@ const products = [
     id: "daily",
     name: "Daily Collection",
     items: "GRW, NRM, SLD, STP, GTS, RLX, PWR Lemon, PWR Apricot",
-    retail: 862.5,
+    retail: 860,
     wholesale: 431.25,
     startingStock: 10
   },
@@ -14,7 +14,7 @@ const products = [
     id: "premium",
     name: "Premium Collection",
     items: "MLS, ALT, ICE, HRT, HPR, LFT",
-    retail: 1293.75,
+    retail: 1300,
     wholesale: 1035,
     startingStock: 10
   },
@@ -22,7 +22,7 @@ const products = [
     id: "elite",
     name: "Elite Collection",
     items: "BRN, HPY, AIR, BTY",
-    retail: 1725,
+    retail: 1700,
     wholesale: 1380,
     startingStock: 10
   },
@@ -30,7 +30,7 @@ const products = [
     id: "pft",
     name: "PFT",
     items: "PFT",
-    retail: 1863,
+    retail: 1800,
     wholesale: 1552.5,
     startingStock: 10
   }
