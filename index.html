@@ -303,12 +303,29 @@
       const flavourButtons = card.querySelectorAll("[data-select-flavour]");
 
       const setBuyMessage = (flavourName) => {
-        const selectedText = flavourName ? `${flavourName} from the ${productName}` : productName;
-        const message = `Hello Health Sweets Ntombi, I want to order ${selectedText}. Retail price: ${productPrice}. Delivery via PEP is included in the amount paid.`;
-        if (buyLink) {
-          buyLink.href = `https://wa.me/27714406462?text=${encodeURIComponent(message)}`;
-        }
-      };
+  const selectedText = flavourName ? `${flavourName} from the ${productName}` : productName;
+  
+  // Get the product image
+  const productImage = card.querySelector('.collection-photo');
+  const imageUrl = productImage ? productImage.src : '';
+  
+  // Create message with image placeholder and product details
+  const message = `Hello Health Sweets Ntombi 👋
+
+I want to order: ${selectedText}
+
+🛒 Product: ${productName}
+💰 Price: ${productPrice}
+🚚 Delivery: PEP Store (2-3 days) - Included
+
+📸 Product Image: ${imageUrl}
+
+Please confirm availability and payment details.`;
+
+  if (buyLink) {
+    buyLink.href = `https://wa.me/27714406462?text=${encodeURIComponent(message)}`;
+  }
+};
 
       setBuyMessage("");
 
