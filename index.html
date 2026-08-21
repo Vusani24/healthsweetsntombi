@@ -118,7 +118,7 @@
         <p>Our organic sweets are made from natural plants, fruits, and vegetables, and are designed to support a healthy lifestyle. Choose from Daily, Premium, Elite, and PFT collections.</p>
       </div>
       <div class="product-grid">
-        <article class="collection-card" data-product-card data-product-name="Daily Collection" data-product-price="R862,50">
+        <article class="collection-card" data-product-card data-product-name="Daily Collection" data-product-price="R860">
           <div class="product-picker daily-picker" aria-label="Select a Daily Collection flavour">
             <img class="collection-photo" src="assets/daily-collection-products-public.png" alt="Daily Collection APLGO product boxes">
             <button type="button" data-select-flavour="GRW">GRW</button>
@@ -137,10 +137,10 @@
           <div class="price-grid">
             <span>Retail price</span><strong>R860</strong>
           </div>
-          <a class="btn btn-card" href="https://wa.me/27714406462?text=Hello%20Health%20Sweets%20Ntombi%2C%20I%20want%20to%20order%20the%20Daily%20Collection.%20Retail%20price%3A%20R862%2C50." target="_blank" rel="noopener" data-buy-product>Buy Daily</a>
+          <a class="btn btn-card" href="#" target="_blank" rel="noopener" data-buy-product>Buy Daily</a>
         </article>
 
-        <article class="collection-card" data-product-card data-product-name="Premium Collection" data-product-price="R1293,75">
+        <article class="collection-card" data-product-card data-product-name="Premium Collection" data-product-price="R1300">
           <div class="product-picker premium-picker" aria-label="Select a Premium Collection flavour">
             <img class="collection-photo" src="assets/premium-collection-products-public.png" alt="Premium Collection APLGO product boxes">
             <button type="button" data-select-flavour="MLS">MLS</button>
@@ -156,10 +156,10 @@
           <div class="price-grid">
             <span>Retail price</span><strong>R1300</strong>
           </div>
-          <a class="btn btn-card" href="https://wa.me/27714406462?text=Hello%20Health%20Sweets%20Ntombi%2C%20I%20want%20to%20order%20the%20Premium%20Collection.%20Retail%20price%3A%20R1293%2C75." target="_blank" rel="noopener" data-buy-product>Buy Premium</a>
+          <a class="btn btn-card" href="#" target="_blank" rel="noopener" data-buy-product>Buy Premium</a>
         </article>
 
-        <article class="collection-card" data-product-card data-product-name="Elite Collection" data-product-price="R1725">
+        <article class="collection-card" data-product-card data-product-name="Elite Collection" data-product-price="R1700">
           <div class="product-picker elite-picker" aria-label="Select an Elite Collection flavour">
             <img class="collection-photo" src="assets/elite-collection-products-public.png" alt="Elite Collection APLGO product boxes">
             <button type="button" data-select-flavour="BRN">BRN</button>
@@ -173,10 +173,10 @@
           <div class="price-grid">
             <span>Retail price</span><strong>R1700</strong>
           </div>
-          <a class="btn btn-card" href="https://wa.me/27714406462?text=Hello%20Health%20Sweets%20Ntombi%2C%20I%20want%20to%20order%20the%20Elite%20Collection.%20Retail%20price%3A%20R1725." target="_blank" rel="noopener" data-buy-product>Buy Elite</a>
+          <a class="btn btn-card" href="#" target="_blank" rel="noopener" data-buy-product>Buy Elite</a>
         </article>
 
-        <article class="collection-card pft-card" data-product-card data-product-name="PFT" data-product-price="R1863">
+        <article class="collection-card pft-card" data-product-card data-product-name="PFT" data-product-price="R1800">
           <div class="product-picker pft-picker" aria-label="Select PFT">
             <img class="collection-photo" src="assets/pft-product-public.png" alt="PFT APLGO product box">
             <button type="button" data-select-flavour="PFT">PFT</button>
@@ -188,7 +188,7 @@
           <div class="price-grid">
             <span>Retail price</span><strong>R1800</strong>
           </div>
-          <a class="btn btn-card" href="https://wa.me/27714406462?text=Hello%20Health%20Sweets%20Ntombi%2C%20I%20want%20to%20order%20PFT.%20Retail%20price%3A%20R1863." target="_blank" rel="noopener" data-buy-product>Buy PFT</a>
+          <a class="btn btn-card" href="#" target="_blank" rel="noopener" data-buy-product>Buy PFT</a>
         </article>
       </div>
       <p class="vat-note">Prices include 15% VAT. Business information is available after joining as a distributor.</p>
@@ -295,7 +295,6 @@
     }
 
     const productCards = document.querySelectorAll("[data-product-card]");
-    <button class="btn btn-share" onclick="shareProduct('Daily Collection', 'R860')">📤 Share</button>
 
     productCards.forEach((card) => {
       const productName = card.dataset.productName;
@@ -304,14 +303,14 @@
       const flavourButtons = card.querySelectorAll("[data-select-flavour]");
 
       const setBuyMessage = (flavourName) => {
-  const selectedText = flavourName ? `${flavourName} from the ${productName}` : productName;
-  
-  // Get the product image
-  const productImage = card.querySelector('.collection-photo');
-  const imageUrl = productImage ? productImage.src : '';
-  
-  // Create message with image placeholder and product details
-  const message = `Hello Health Sweets Ntombi 👋
+        const selectedText = flavourName ? `${flavourName} from the ${productName}` : productName;
+        
+        // Get the product image
+        const productImage = card.querySelector('.collection-photo');
+        const imageUrl = productImage ? productImage.src : '';
+        
+        // Create message with product details
+        const message = `Hello Health Sweets Ntombi 👋
 
 I want to order: ${selectedText}
 
@@ -323,12 +322,19 @@ I want to order: ${selectedText}
 
 Please confirm availability and payment details.`;
 
-  if (buyLink) {
-    buyLink.href = `https://wa.me/27714406462?text=${encodeURIComponent(message)}`;
-  }
-};
+        if (buyLink) {
+          buyLink.href = `https://wa.me/27714406462?text=${encodeURIComponent(message)}`;
+          buyLink.target = "_blank";
+          buyLink.rel = "noopener";
+        }
+      };
 
-      setBuyMessage("");
+      // Set initial message
+      if (flavourButtons.length === 1) {
+        setBuyMessage(flavourButtons[0].dataset.selectFlavour);
+      } else {
+        setBuyMessage("");
+      }
 
       flavourButtons.forEach((button) => {
         button.addEventListener("click", () => {
@@ -342,10 +348,6 @@ Please confirm availability and payment details.`;
           if (buyLink) buyLink.focus();
         });
       });
-
-      if (flavourButtons.length === 1) {
-        setBuyMessage(flavourButtons[0].dataset.selectFlavour);
-      }
     });
   </script>
 </body>
