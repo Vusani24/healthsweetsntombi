@@ -20,27 +20,6 @@
     {
       "src": "assets/*",
       "use": "@vercel/static"
-    },
-    {
-      "src": "assets/*.mp4",
-      "use": "@vercel/static",
-      "headers": {
-        "Content-Type": "video/mp4"
-      }
-    },
-    {
-      "src": "assets/*.jpeg",
-      "use": "@vercel/static",
-      "headers": {
-        "Content-Type": "image/jpeg"
-      }
-    },
-    {
-      "src": "assets/*.png",
-      "use": "@vercel/static",
-      "headers": {
-        "Content-Type": "image/png"
-      }
     }
   ],
   "routes": [
