@@ -43,5 +43,12 @@ server.listen(port, () => {
   console.log(`Health Sweets Ntombi site running at http://localhost:${port}`);
 });
 
+// For local development only
+if (require.main === module) {
+  app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+  });
+}
+
 // EXPORT FOR VERCEL - Add this at the bottom
 module.exports = app;
