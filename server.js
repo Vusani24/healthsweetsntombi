@@ -18,7 +18,7 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'Server is running' });
 });
 
-// Your existing API endpoints
+// Your existing API endpoints go here
 // Example:
 // app.post('/api/orders', (req, res) => { ... });
 
